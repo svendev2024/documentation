@@ -26,7 +26,7 @@ builds upon the previous one, so make sure to follow them in order.
 
 Ready? Let's get started!
 
-* :doc:`server_framework_101/01_architecture`
+* :doc:`server_framework_101/01_architecture_overview`
 * :doc:`server_framework_101/02_newapp`
 * :doc:`server_framework_101/03_basicmodel`
 * :doc:`server_framework_101/04_securityintro`
