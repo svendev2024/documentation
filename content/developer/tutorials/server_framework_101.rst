@@ -10,16 +10,15 @@ Server framework 101
 
     server_framework_101/*
 
-Welcome to the Server framework 101 tutorial! If you reached this page that means you are
-interested in the development of your own Odoo module. It might also mean that you recently
-joined the Odoo company for a rather technical position. In any case, your journey to the
-technical side of Odoo starts here.
+**Welcome to the Server framework 101 tutorial!**
 
-The goal of this tutorial is for you to get an insight of the most important parts of the Odoo
-development framework while developing your own Odoo module to manage real estate assets. The
-chapters should be followed in their given order since they cover the development of a new Odoo
-application from scratch in an incremental way. In other words, each chapter depends on the previous
-one.
+Are you eager to learn about the server framework of Odoo? Perhaps you have recently joined Odoo in
+a technical role. Either way, this tutorial will level you up as an Odoo developer and show you the
+ropes of working with the server framework.
+
+This tutorial will take you on a step-by-step journey, building a real estate asset management
+application as you explore the core concepts of the server framework. Each chapter of the tutorial
+builds upon the previous one, so make sure to follow them in order.
 
 .. important::
    Before going further, make sure you have prepared your development environment with the
