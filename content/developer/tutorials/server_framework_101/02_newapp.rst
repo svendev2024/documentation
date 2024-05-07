@@ -1,99 +1,102 @@
-============================
-Chapter 2: A New Application
-============================
+.. todo: update title?
 
-The purpose of this chapter is to lay the foundation for the creation of a completely new Odoo module.
-We will start from scratch with the minimum needed to have our module recognized by Odoo.
-In the upcoming chapters, we will progressively add features to build a realistic business case.
+==============================
+Chapter 2: Lay the foundations
+==============================
 
-The Real Estate Advertisement module
-====================================
+.. todo introduction text
 
-Our new module will cover a business area which is very specific and therefore not included in the
-standard set of modules: real estate. It is worth noting that before
-developing a new module, it is good practice to verify that Odoo doesn't already provide a way
-to answer the specific business case.
+Install the app
+===============
 
-Here is an overview of the main list view containing some advertisements:
+If you followed the :doc:`setup guide <../setup_guide>` carefully, you should now have a running
+Odoo server with the `odoo/tutorials` repository in the `addons-path`, and be logged in as an
+administrator.
 
-.. image:: 02_newapp/overview_list_view_01.png
-   :align: center
-   :alt: List view 01
+**Let's install our real estate app!** In your browser, open Odoo and navigate to
+:menuselection:`Apps`. Search for :guilabel:`Real Estate` and click :guilabel:`Activate`.
 
-The top area of the form view summarizes important information for the property, such as the name,
-the property type, the postcode and so on. The first tab contains information describing the
-property: bedrooms, living area, garage, garden...
+Nothing has changed? That's normal; the `real_estate` module we just installed is currently an empty
+shell. It doesn't even have a menu entry. Currently, it only contains two files:
 
-.. image:: 02_newapp/overview_form_view_01.png
-   :align: center
-   :alt: Form view 01
+- An empty :file:`__init__.py` file to make Python treat the :file:`real_estate` directory as a
+  package.
+- The :file:`__manifest__.py` file that declares the :file:`real_estate` Python package as an Odoo
+  module.
 
-The second tab lists the offers for the property. We can see here that potential buyers can make
-offers above or below the expected selling price. It is up to the seller to accept an offer.
+Those two files are the minimum requirements for a directory to be considered an Odoo module.
 
-.. image:: 02_newapp/overview_form_view_02.png
-   :align: center
-   :alt: Form view 02
+.. exercise::
+   Search for each key of the :file:`real_estate/__manifest__.py` file in the :ref:`reference
+   documentation <reference/module/manifest>` and understand the base metadata that defines the
+   `real_estate` module.
 
-Here is a quick video showing the workflow of the module.
+.. seealso::
+   `The manifest file of the Sales app <{GITHUB_PATH}/addons/sale/__manifest__.py>`_
 
-Hopefully, this video will be recorded soon :-)
+Create the first model
+======================
 
-Prepare the addon directory
-===========================
+Now that our module is recognized by Odoo, it's time to build towards the business features. Data is
+essential for any real-world application, and our real estate module won't be an exception.
 
-**Reference**: the documentation related to this topic can be found in
-:ref:`manifest <reference/module/manifest>`.
+To store data effectively, we need two things: a way to define the structure of that data, and a
+system to store and manipulate it. Fortunately, the server framework of Odoo comes equipped with the
+perfect tool: the :abbr:`ORM (Object Relational Mapper)` layer.
 
-.. note::
+The ORM simplifies data access and manipulation by allowing you to define **models**. Models act as
+blueprints for your data; they define the structure and organization of information within your
+module. You can see them as templates that specify what kind of data your module will handle. For
+example, real estate properties, owners, or tenants.
 
-   **Goal**: the goal of this section is to have Odoo recognize our new module, which will
-   be an empty shell for now. It will be listed in the Apps:
+Each model is made of smaller components called **fields**. You can see them as the individual
+characteristics that describe your data. Fields allow you to define the relevant data your
+application needs to capture and manage. In the case of real estate properties, some example fields
+could be the property name, the type (house, apartment, etc.), and the floor area.
 
-   .. image:: 02_newapp/app_in_list.png
-      :align: center
-      :alt: The new module appears in the list
+In Odoo, models are represented by Python classes that inherit from the `odoo.models.Model` class
+provided by the ORM, and they are identified by their `_name` attribute. Within these model classes,
+fields are defined as class attributes. Each field is an instance of a class from the `odoo.fields`
+package. For example, `Char`, `Float`, `Boolean`, each designed to handle different types of data.
 
-The first step of module creation is to create its directory. In the `tutorials`
-directory, add a new directory :file:`estate`.
+When defining a field, developers can pass various arguments to finely control how data is handled
+and presented in Odoo. For example, `string` defines the label for the field in the user interface,
+and `required` makes filling the field in mandatory.
 
-A module must contain at least 2 files: the ``__manifest__.py`` file and a ``__init__.py`` file.
-The ``__init__.py`` file can remain empty for now and we'll come back to it in the next chapter.
-On the other hand, the ``__manifest__.py`` file must describe our module and cannot remain empty.
-Its only required field is the ``name``, but it usually contains much more information.
+For the full list of fields and their attributes, see the :ref:`reference documentation
+<reference/orm/fields>`.
 
-Take a look at the
-`CRM file <https://github.com/odoo/odoo/blob/fc92728fb2aa306bf0e01a7f9ae1cfa3c1df0e10/addons/crm/__manifest__.py#L1-L67>`__
-as an example. In addition to providing the description of the module (``name``, ``category``,
-``summary``, ``website``...), it lists its dependencies (``depends``). A dependency means that the
-Odoo framework will ensure that these modules are installed before our module is installed. Moreover, if
-one of these dependencies is uninstalled, then our module and **any other that depends on it will also
-be uninstalled**. Think about your favorite Linux distribution package manager
-(``apt``, ``dnf``, ``pacman``...): Odoo works in the same way.
+.. example::
+   Before we dive into creating our own models, let's take a look at a basic example of a model that
+   represents products:
 
-.. exercise:: Create the required addon files.
+   .. code-block:: python
 
-    Create the following folders and files:
-
-    - ``/home/$USER/src/tutorials/estate/__init__.py``
-    - ``/home/$USER/src/tutorials/estate/__manifest__.py``
-
-    The ``__manifest__.py`` file should only define the name and the dependencies of our modules.
-    The only necessary framework module for now is ``base``.
+      from odoo import fields, models
 
 
-Restart the Odoo server and go to Apps. Click on Update Apps List, search for ``estate`` and...
-tadaaa, your module appears! Did it not appear? Maybe try removing the default 'Apps' filter ;-)
+      class Product(models.Model):
+          _name = 'product'
 
-.. warning::
-   Remember to enable the :ref:`developer mode <developer-mode>` as explained in the previous
-   chapter. You won't see the :guilabel:`Update Apps List` button otherwise.
+          name = fields.Char(string="Name", required=True)
+          description = fields.Text(string="Description")
+          price = fields.Float(string="Sale Price", required=True)
+          category = fields.selection(
+              string="Category",
+              selection=[
+                  ('apparel', "Clothing")
+                  ('electronics', "Electronics"),
+                  ('home_decor', "Home Decor"),
+              ],
+              required=True,
+              default='apparel',
+          )
 
-.. exercise:: Make your module an 'App'.
+.. todo: add exercise to create the real.estate.property model
+.. todo: show the impact on SQL: table, columns
+.. todo: add introduction to actions, menus, views
+.. todo: add exercise to create necessary records to browse Properties
 
-    Add the appropriate key to your ``__manifest__.py`` so that the module appears when the 'Apps'
-    filter is on.
+----
 
-You can even install the module! But obviously it's an empty shell, so no menu will appear.
-
-All good? If yes, then let's :doc:`create our first model <03_basicmodel>`!
+.. todo: add incentive to move to the next chapter
