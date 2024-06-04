@@ -57,18 +57,18 @@ a sales order to view the associated :abbr:`RFQ (Request for Quotation)`.
    :align: center
    :alt: A dropship sales order with the Purchase smart button in the top right corner.
 
-Once the :abbr:`RFQ (Request for Quotation)` is confirmed, it becomes a purchase order and a
+Once the :abbr:`RFQ (Request for Quotation)` is confirmed, it becomes a purchase order, and a
 dropship receipt is created and linked to it. The receipt can be viewed by clicking the
-:guilabel:`Receipt` smart button in the top right corner of the purchase order form.
+:guilabel:`Dropship` smart button in the top-right corner of the purchase order form.
 
 .. image:: dropshipping/dropship-purchase-order.png
    :align: center
    :alt: A dropship purchase order with the Receipt smart button in the top right corner.
 
-The dropship receipt will list the supplier in the :guilabel:`Receive From` section and the customer
-in the :guilabel:`Destination Location` section. Upon delivery of the product to the customer, click
-on the :guilabel:`Validate` button at the top left of the dropship receipt to confirm the delivered
-quantity.
+The dropship receipt displays :guilabel:`Partners/Vendors` in the :guilabel:`Source Location` field,
+and :guilabel:`Partners/Customers` in the :guilabel:`Destination Location` field. Upon delivery of
+the product to the customer, click on the :guilabel:`Validate` button at the top-left of the
+dropship receipt to confirm the delivered quantity.
 
 .. image:: dropshipping/validate-dropship-receipt.png
    :align: center
