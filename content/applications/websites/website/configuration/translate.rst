@@ -78,6 +78,8 @@ contents and saving.
    - You can also :doc:`export/import translations <../../../../developer/howtos/translations>`
      to translate multiple items (e.g., product names and descriptions) in one go.
 
+.. _translate/language-selector:
+
 Language selector menu
 ======================
 

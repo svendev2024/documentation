@@ -2,60 +2,41 @@
 Change language
 ===============
 
-Odoo provides you with the option to manage Odoo in different languages,
-and each user can use Odoo in his own language .
+Your database's language is selected upon its creation. However, you can :ref:`add <language/add>`
+and :ref:`install <language/install>` additional languages to allow users to manage their database
+in another language or to :doc:`translate <../../websites/website/configuration/translate>` your
+website.
 
-Load your desired language
-==========================
+.. _language/add:
 
-The first thing to do is to load your desired language on your Odoo
-instance.
+Add languages
+=============
 
-From the general dashboard click on the **Settings** app; on the top
-left of the page select :menuselection:`Translations --> Load a Translation`,
-select a language to install and click on **LOAD.**
+You can download additional languages by going to :menuselection:`My profile` and clicking on the
+:icon:`fa-globe` (:guilabel:`globe`) icon next to the :guilabel:`Language` field, or from your
+dashboard, by going to the **Settings** app, :guilabel:`Languages` section, and clicking
+:guilabel:`Add Languages`. Select the languages you want from the dropdown menu.
 
-.. image:: language/choose_language01.png
-    :align: center
+Ticking the :guilabel:`Websites to translate` checkboxes allows users to change your website's
+navigation to another language using the :ref:`language selector <translate/language-selector>`. As
+an admin, this also enables you to :guilabel:`Add a language` from your website.
 
-.. note::
+.. image:: language/change_language.png
+   :alt: change language using the language selector
 
-    If you check the "Websites to translate" checkbox you will have the option
-    to change the navigation language on your website.
+.. tip::
+   You might have to refresh your page to see the new language.
 
-Change your language
-====================
+.. _language/install:
 
-You can change the language to the installed language by going to the
-drop-down menu at the top right side of the screen, choose
-**Preferences**.
+Change language
+===============
 
-.. image:: language/choose_language02.png
-    :align: center
+Users of your database can choose their favorite language by going to :menuselection:`My profile -->
+Preferences --> Language`.
 
-Then change the Language setting to your installed language and click
-**SAVE.**
-
-.. image:: language/choose_language03.png
-    :align: center
-
-Open a new menu to view the changes.
-
-Change another user's language
-==============================
-
-Odoo also gives you the possibility for each user to choose his
-preferred language.
-
-To change the language for a different user, choose :menuselection:`Users --> Users`
-from the Settings app. Here you have a list of all users and you can
-choose the user who you'd like to change the language for. Select the
-user and click on **Edit** in the top left corner. Under Preferences you
-can change the Language to any previously installed language and click
-**SAVE.**
-
-.. image:: language/choose_language04.png
-    :align: center
-
-.. seealso::
-    * :doc:`../../websites/website/configuration/translate`
+.. tip::
+   You can decide to send emails and documents to a contact into any previously installed language.
+   To do so, go to **Settings** app, :guilabel:`Users` section, and click :guilabel:`Manage Users`.
+   Select a user, go to the :guilabel:`Preferences` tab, and select the :guilabel:`Language` you
+   want.
