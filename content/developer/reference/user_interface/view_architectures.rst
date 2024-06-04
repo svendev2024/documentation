@@ -2495,6 +2495,15 @@ Optional attributes can be added to the root element `kanban` to customize the v
    :type: bool
    :default: `True`
 
+.. attribute:: color
+   :noindex:
+
+   Name of the integer field used to color the left border of the kanban cards. If not set, the
+   field with widget `kanban_colorpicker`, which allows to edit the color, is used as color field.
+
+   :requirement: Optional
+   :type: str
+
 .. include:: view_architectures/root_attribute_sample.rst
 
 .. include:: view_architectures/root_attribute_banner_route.rst
