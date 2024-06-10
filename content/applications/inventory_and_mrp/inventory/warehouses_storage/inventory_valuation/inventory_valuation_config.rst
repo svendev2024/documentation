@@ -12,11 +12,11 @@ By default, Odoo uses a periodic inventory valuation (also known as manual inven
 This method implies that the accounting team posts journal entries based on the physical inventory
 of the company, and that warehouse employees take the time to count the stock. In Odoo, this method
 is reflected inside each product category, where the :guilabel:`Costing Method` field will be set to
-`Standard Price` by default, and the :guilabel:`Inventory Valuation` field will be set to `Manual`.
+`Standard Price` by default.
 
 .. image:: inventory_valuation_config/inventory-valuation-fields.png
    :align: center
-   :alt: The Inventory Valuation fields are located on the Product Categories form.
+   :alt: The Costing Method field is located on the Product Categories form.
 
 Alternatively, automated inventory valuation is an integrated valuation method that updates the
 inventory value in real-time by creating journal entries whenever there are stock moves initiated
@@ -28,7 +28,7 @@ between locations in a company's inventory.
    need to be periodically checked to ensure accuracy, and adjustments may be needed on an ongoing
    basis depending on the needs and priorities of the business.
 
-.. _inventory/inventory_valuation_config/accounting:
+.. _inventory/warehouses_storage/accounting-types:
 
 Types of accounting
 ===================
@@ -59,14 +59,14 @@ stock. Because of this, the :guilabel:`Expense Account` can be set to **either**
 
 .. seealso::
    :ref:`Details about configuring Expense and Stock accounts
-   <inventory/management/config-inventory-valuation>`
+   <inventory/warehouses_storage/config-inventory-valuation>`
 
 Configuration
 =============
 
 Make changes to inventory valuation options by navigating to :menuselection:`Inventory app -->
 Configuration --> Product Categories`. In the :guilabel:`Inventory Valuation` section, select the
-desired :guilabel:`Costing Method` and :guilabel:`Inventory Valuation` options.
+desired :guilabel:`Costing Method`.
 
 .. note::
    It is possible to use different valuation settings for different product categories.
@@ -75,7 +75,15 @@ desired :guilabel:`Costing Method` and :guilabel:`Inventory Valuation` options.
    :align: center
    :alt: Show inventory valuation configuration options.
 
-.. _inventory/inventory_valuation_config/costing_methods:
+To use automatic inventory valuation, the *Accounting* app must be installed. Then, go to
+:menuselection:`Accounting app --> Settings --> Configuration`, and in the :guilabel:`Stock
+Valuation` section, tick the :guilabel:`Automatic Accounting` checkbox.
+
+.. image:: inventory_valuation_config/auto-accounting.png
+   :align: center
+   :alt: Automatic Accounting feature in Stock Valuation section of Settings page.
+
+.. _inventory/warehouses_storage/costing_methods:
 
 Costing method
 --------------
@@ -117,7 +125,7 @@ value, and any product moves from then on affect the average cost, and the cost 
 change. If the value in the :guilabel:`Cost` field on a product form is changed manually, Odoo will
 generate a corresponding record in the *Inventory Valuation* report.
 
-.. _inventory/management/config-inventory-valuation:
+.. _inventory/warehouses_storage/config-inventory-valuation:
 
 Inventory valuation
 -------------------
@@ -126,10 +134,11 @@ Inventory valuation in Odoo can be set to be updated manually or automatically. 
 accounts apply to both, the *Stock Input* and *Stock Output* accounts are only used for automated
 valuation.
 
-Refer to the :ref:`Expense <inventory/management/expense-account>` and :ref:`Stock input/output
-<inventory/management/stock-account>` sections for details on configuring each account type.
+Refer to the :ref:`Expense <inventory/warehouses_storage/expense-account>` and :ref:`Stock
+input/output <inventory/warehouses_storage/stock-account>` sections for details on configuring each
+account type.
 
-.. _inventory/management/expense-account:
+.. _inventory/warehouses_storage/expense-account:
 
 Expense account
 ~~~~~~~~~~~~~~~
@@ -184,7 +193,7 @@ right of the account. Then, set the account type based on the information below.
             Set the :guilabel:`Expense Account` to the :guilabel:`Expenses` or :guilabel:`Cost of
             Revenue` account type.
 
-.. _inventory/management/stock-account:
+.. _inventory/warehouses_storage/stock-account:
 
 Stock input/output (automated only)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
