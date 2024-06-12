@@ -48,6 +48,7 @@ Here is the list of Spanish-specific statement reports available:
 - EC Sales List;
 - Tax Report (Modelo 111);
 - Tax Report (Modelo 115);
+- Tax Report (Modelo 130);
 - Tax Report (Modelo 303);
 - Tax Report (Modelo 347);
 - Tax Report (Modelo 349);
@@ -58,6 +59,40 @@ selecting its Spain-specific version: :guilabel:`(ES)`.
 
 .. image:: spain/modelo-reports.png
    :alt: Spain-specific tax reports.
+
+Modelo 130
+----------
+
+Change percentage
+~~~~~~~~~~~~~~~~~
+
+If you want to change the percentage of box 04 and 09 :
+
+- Activate the :ref:`developer mode <developer-mode>`
+- Go to the settings of the report
+
+.. image:: spain/report-settings.png
+   :alt: Spain modelo 130 report settings button
+
+- Click on the box you want to change (04 or 09)
+- In the box who just appeared, change the percentage as you wish
+
+.. image:: spain/percentage_field.png
+   :alt: Editable percentage field
+
+.. image:: spain/percentage_field_box.png
+   :alt: Percentage value
+
+Report agriculture activity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to add value in box 08 to 11, you have to change the Industry of your customer :
+
+- Go to the customers page and select a customer
+- In the Sales & Purchase tab, select Agriculture in the industry field
+
+.. image:: spain/customer_industry_field.png
+   :alt: Editable industry field
 
 TicketBAI
 =========
